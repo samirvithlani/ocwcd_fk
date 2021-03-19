@@ -9,4 +9,8 @@ public interface StudentService {
 	public boolean addStudent(StudentBean studentBean);
 
 	public List<StudentBean> viewStudent();
+	
+	public StudentBean login(String sEmail,String sPassword);
+	
+	
 }

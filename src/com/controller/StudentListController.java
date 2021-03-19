@@ -1,6 +1,8 @@
 package com.controller;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -11,9 +13,9 @@ import com.dao.StudentDao;
 import com.service.StudentService;
 
 /**
- * Servlet implementation class AddStudentController
+ * Servlet implementation class StudentListController
  */
-public class AddStudentController extends HttpServlet {
+public class StudentListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -24,6 +26,12 @@ public class AddStudentController extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
+
+		StudentService service = new StudentDao();
+		List<StudentBean> studentlist = service.viewStudent();
+		request.setAttribute("studentList", studentlist);
+		request.getRequestDispatcher("studentList.jsp").forward(request, response);
+
 	}
 
 	/**
@@ -34,29 +42,6 @@ public class AddStudentController extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
-
-		System.out.println("called");
-		String sName = request.getParameter("txtStudentName");
-		System.out.println("---");
-		int cId = Integer.parseInt(request.getParameter("course"));
-		String sEmail = request.getParameter("txtStudentEmail");
-		String sPassword = request.getParameter("pwdStudentPassword");
-
-		StudentBean studentBean = new StudentBean();
-		studentBean.setsName(sName);
-		studentBean.setcId(cId);
-		studentBean.setsEmail(sEmail);
-		studentBean.setsPassword(sPassword);
-
-		StudentService service = new StudentDao();
-		if (service.addStudent(studentBean)) {
-
-			response.sendRedirect("StudentListController");
-		} else {
-
-			response.sendRedirect("StudentListController");
-		}
-
 	}
 
 }
