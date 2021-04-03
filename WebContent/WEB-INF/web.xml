@@ -39,4 +39,42 @@
     <servlet-name>LoginController</servlet-name>
     <url-pattern>/LoginController</url-pattern>
   </servlet-mapping>
+  <filter>
+    <display-name>CountFilter</display-name>
+    <filter-name>CountFilter</filter-name>
+    <filter-class>com.filter.CountFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>CountFilter</filter-name>
+    <url-pattern>*.jsp</url-pattern>
+  </filter-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Counting</display-name>
+    <servlet-name>Counting</servlet-name>
+    <servlet-class>com.controller.Counting</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Counting</servlet-name>
+    <url-pattern>/Counting</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DemoController</display-name>
+    <servlet-name>DemoController</servlet-name>
+    <servlet-class>com.controller.DemoController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DemoController</servlet-name>
+    <url-pattern>/DemoController</url-pattern>
+  </servlet-mapping>
+  <filter>
+    <display-name>ValidationFilter</display-name>
+    <filter-name>ValidationFilter</filter-name>
+    <filter-class>com.filter.ValidationFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>ValidationFilter</filter-name>
+    <url-pattern>/DemoController</url-pattern>
+  </filter-mapping>
 </web-app>
